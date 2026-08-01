@@ -1,0 +1,14 @@
+# Compiled class files & build directories
+*.class
+bin/
+build/
+dist/
+nbproject/private/
+
+# Unrelated project folders
+nasa space/
+
+# OS and Log files
+.DS_Store
+Thumbs.db
+*.log
