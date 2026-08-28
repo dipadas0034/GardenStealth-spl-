@@ -7,7 +7,7 @@ public class KeyHandler implements KeyListener {
 
     GamePanel gp;
     public boolean upPressed, downPressed, leftPressed, rightPressed;
-    public boolean spacePressed, pPressed;
+    public boolean spacePressed, pPressed, mPressed;
 
     public KeyHandler(GamePanel gp) {
         this.gp = gp;
@@ -37,6 +37,9 @@ public class KeyHandler implements KeyListener {
         }
         if (code == KeyEvent.VK_P) {
             pPressed = true;
+        }
+        if (code == KeyEvent.VK_M) {
+            mPressed = true;
         }
     }
 

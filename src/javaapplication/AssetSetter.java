@@ -23,15 +23,15 @@ public class AssetSetter {
 
         // Hut 1: Door at front, Chest inside hut
         addDoor(17, 16);
-        addChest(17, 15);
+        addChest(17, 13);
 
         // Hut 2: Door at front, Chest inside hut
-        addDoor(3, 47);
-        addChest(3, 46);
+        addDoor(3, 45);
+        addChest(3, 48);
 
         // Hut 3: Door at front, Chest inside hut
         addDoor(46, 20);
-        addChest(46, 19);
+        addChest(46, 16);
     }
 
     public void setMonster() {

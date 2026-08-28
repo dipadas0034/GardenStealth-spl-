@@ -173,16 +173,16 @@ public class Player extends Playerclass {
                     totalKeysCollected++;
                     hasKey = true;
                     gp.obj.set(index, null);
-                    openNearestGate();
                     break;
 
                 case "Gate":
                 case "Door":
-                    if (hasKey) {
+                    if (keyCount > 0) {
                         gp.playSE(2); // Play unlock.wav sound
                         gp.obj.set(index, null);
                         doorOpened = true;
-                        hasKey = false;
+                        keyCount--;
+                        hasKey = (keyCount > 0);
                     } else {
                         collisionOn = true;
                     }

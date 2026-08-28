@@ -71,6 +71,22 @@ public class GamePanel extends JPanel implements Runnable {
         setDoubleBuffered(true);
         addKeyListener(keyH);
         setFocusable(true);
+
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mousePressed(java.awt.event.MouseEvent e) {
+                int mx = e.getX();
+                int my = e.getY();
+                int btnX = screenWidth - 60;
+                int btnY = 15;
+                int btnW = 44;
+                int btnH = 44;
+                if (mx >= btnX && mx <= btnX + btnW && my >= btnY && my <= btnY + btnH) {
+                    toggleSound();
+                }
+            }
+        });
+
         ui = new UserInterface(this);
         asetter = new AssetSetter(this);
     }
@@ -173,6 +189,11 @@ public class GamePanel extends JPanel implements Runnable {
             gamestate = (gamestate == playstate) ? pausestate : playstate;
             keyH.pPressed = false;
             lastTime = System.currentTimeMillis();
+        }
+
+        if (keyH.mPressed) {
+            toggleSound();
+            keyH.mPressed = false;
         }
 
         if (gameStarted && !gameFinished && gamestate == playstate) {
@@ -344,7 +365,19 @@ public class GamePanel extends JPanel implements Runnable {
         g2.dispose();
     }
 
+    public boolean soundOn = true;
+
+    public void toggleSound() {
+        soundOn = !soundOn;
+        if (!soundOn) {
+            stopMusic();
+        } else {
+            playmusic(0);
+        }
+    }
+
     public void playmusic(int i) {
+        if (!soundOn) return;
         sound.setFile(i);
         sound.play();
         sound.loop();
@@ -355,6 +388,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void playSE(int i) {
+        if (!soundOn) return;
         music.setFile(i);
         music.play();
     }
